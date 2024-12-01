@@ -105,21 +105,12 @@ func (o *Order) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// GetOrderSide gets the orderside along with its orders in one side of the market
-func (ob *OrderBook) GetOrderSide(side Side) *OrderSide {
-	switch side {
-	case Buy:
-		return ob.bids
-	default:
-		return ob.asks
-	}
-}
-
 // MarketOverview gives an overview of the market including the quantities and prices of each side in the market
 // asks:   qty   price       bids:  qty   price
-//         0.2   14                 0.9   13
-//         0.1   14.5               5     14
-//         0.8   16                 2     16
+//
+//	0.2   14                 0.9   13
+//	0.1   14.5               5     14
+//	0.8   16                 2     16
 func (ob *OrderBook) MarketOverview() *MarketView {
 
 	return &MarketView{
